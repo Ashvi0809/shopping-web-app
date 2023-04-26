@@ -17,11 +17,7 @@ const MobileNavMenu = () => {
             {t("shop")}
           </Link>
         </li>
-        <li>
-          <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-            {t("collection")}
-          </Link>
-        </li>
+     
         <li className="menu-item-has-children">
           <Link to={process.env.PUBLIC_URL + "/"}>{t("pages")}</Link>
           <ul className="sub-menu">
@@ -68,33 +64,6 @@ const MobileNavMenu = () => {
             <li>
               <Link to={process.env.PUBLIC_URL + "/not-found"}>
                 {t("404_page")}
-              </Link>
-            </li>
-          </ul>
-        </li>
-        <li className="menu-item-has-children">
-          <Link to={process.env.PUBLIC_URL + "/blog-standard"}>
-            {t("blog")}
-          </Link>
-          <ul className="sub-menu">
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/blog-standard"}>
-                {t("blog_standard")}
-              </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/blog-no-sidebar"}>
-                {t("blog_no_sidebar")}
-              </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/blog-right-sidebar"}>
-                {t("blog_right_sidebar")}
-              </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/blog-details-standard"}>
-                {t("blog_details_standard")}
               </Link>
             </li>
           </ul>

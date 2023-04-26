@@ -27,11 +27,6 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
             </Link>
          </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-              {t("collection")}
-            </Link>
-          </li>
-          <li>
             <Link to={process.env.PUBLIC_URL + "/"}>
               {t("pages")}
               {sidebarMenu ? (

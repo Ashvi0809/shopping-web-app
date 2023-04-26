@@ -32,6 +32,13 @@ const currencySlice = createSlice({
                     currencyName
                 };
             }
+            if (currencyName === "IND") {
+                return state = {
+                    currencySymbol: "₹",
+                    currencyRate: 1,
+                    currencyName
+                };
+            }
         }
     },
 });

@@ -9,8 +9,8 @@ const HeroSliderOneSingle = ({ data }) => {
         <div className="row">
           <div className="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6">
             <div className="slider-content slider-animated-1">
-              <h3 className="animated">{data.title}</h3>
-              <h1 className="animated">{data.subtitle}</h1>
+              <h2 className="animated">SHOP FROM </h2>
+              <h1 className="animated"><i>BEST ONLINE BRAND</i></h1>
               <div className="slider-btn btn-hover">
                 <Link
                   className="animated"

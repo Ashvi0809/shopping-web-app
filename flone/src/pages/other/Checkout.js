@@ -1,8 +1,10 @@
 import { Fragment } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
 import { getDiscountPrice } from "../../helpers/product";
 import SEO from "../../components/seo";
+import axios from "axios";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 
@@ -12,7 +14,18 @@ const Checkout = () => {
   let { pathname } = useLocation();
   const currency = useSelector((state) => state.currency);
   const { cartItems } = useSelector((state) => state.cart);
+  const {
+    register,
+    handleSubmit,
 
+  } = useForm();
+  const submit = async (data) => {
+    await axios
+      .post("http://localhost:5005/api/v9/checkout", data)
+      .then((res) => {
+        console.log("res.data",res.data);
+      });
+  };
   return (
     <Fragment>
       <SEO
@@ -27,7 +40,7 @@ const Checkout = () => {
             {label: "Checkout", path: process.env.PUBLIC_URL + pathname }
           ]} 
         />
-        <div className="checkout-area pt-95 pb-100">
+        <form className="checkout-area pt-95 pb-100" onSubmit={handleSubmit(submit)}> 
           <div className="container">
             {cartItems && cartItems.length >= 1 ? (
               <div className="row">
@@ -38,32 +51,28 @@ const Checkout = () => {
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
                           <label>First Name</label>
-                          <input type="text" />
+                          <input type="text" 
+                           name="firstName"
+                           placeholder="First Name"
+                           {...register("firstName")}/>
                         </div>
                       </div>
-                      <div className="col-lg-6 col-md-6">
+                      <div className="col-lg-6">
                         <div className="billing-info mb-20">
                           <label>Last Name</label>
-                          <input type="text" />
+                          <input type="text"
+                           name="lastName"
+                           placeholder="First Name"
+                           {...register("lastName")} />
                         </div>
                       </div>
                       <div className="col-lg-12">
-                        <div className="billing-info mb-20">
-                          <label>Company Name</label>
-                          <input type="text" />
-                        </div>
-                      </div>
-                      <div className="col-lg-12">
-                        <div className="billing-select mb-20">
+                      <div className="billing-info mb-20">
                           <label>Country</label>
-                          <select>
-                            <option>Select a country</option>
-                            <option>Azerbaijan</option>
-                            <option>Bahamas</option>
-                            <option>Bahrain</option>
-                            <option>Bangladesh</option>
-                            <option>Barbados</option>
-                          </select>
+                          <input type="text"
+                           name="country"
+                           placeholder="Country"
+                           {...register("country")} />
                         </div>
                       </div>
                       <div className="col-lg-12">
@@ -71,43 +80,52 @@ const Checkout = () => {
                           <label>Street Address</label>
                           <input
                             className="billing-address"
-                            placeholder="House number and street name"
+                            placeholder="House number and area name"
                             type="text"
+                            name="streetAddress"
+                            {...register("streetAddress")}
                           />
-                          <input
-                            placeholder="Apartment, suite, unit etc."
-                            type="text"
-                          />
+                       
                         </div>
                       </div>
                       <div className="col-lg-12">
                         <div className="billing-info mb-20">
                           <label>Town / City</label>
-                          <input type="text" />
+                          <input type="text"
+                          name="city"
+                          {...register("city")} />
                         </div>
                       </div>
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
-                          <label>State / County</label>
-                          <input type="text" />
+                          <label>State </label>
+                          <input type="text"  
+                           name="state"
+                          {...register("state")}  />
                         </div>
                       </div>
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
                           <label>Postcode / ZIP</label>
-                          <input type="text" />
+                          <input type="text" 
+                           name="zip"
+                           {...register("zip")} />
                         </div>
                       </div>
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
                           <label>Phone</label>
-                          <input type="text" />
+                          <input type="text" 
+                             name="phoneNo"
+                             {...register("phoneNo")}/>
                         </div>
                       </div>
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
                           <label>Email Address</label>
-                          <input type="text" />
+                          <input type="text"     
+                          name="email"
+                           {...register("email")}/>
                         </div>
                       </div>
                     </div>
@@ -197,7 +215,7 @@ const Checkout = () => {
                       <div className="payment-method"></div>
                     </div>
                     <div className="place-order mt-25">
-                      <button className="btn-hover">Place Order</button>
+                      <button type="submit" className="btn-hover">Place Order</button>
                     </div>
                   </div>
                 </div>
@@ -220,7 +238,7 @@ const Checkout = () => {
               </div>
             )}
           </div>
-        </div>
+        </form>
       </LayoutOne>
     </Fragment>
   );

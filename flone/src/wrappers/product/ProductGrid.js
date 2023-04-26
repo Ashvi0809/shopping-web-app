@@ -33,7 +33,7 @@ const ProductGrid = ({
     }, [])
   return (
     <Fragment>
-      {first.map(product => {
+      {first.slice(0,4).map(product=> {
         return (
           <div className="col-xl-3 col-md-6 col-lg-4 col-sm-6" key={product.id}>
             <ProductGridSingle

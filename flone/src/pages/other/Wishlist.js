@@ -46,7 +46,6 @@ const Wishlist = () => {
                             <th>Image</th>
                             <th>Product Name</th>
                             <th>Unit Price</th>
-                            <th>color</th>
                             <th>Add To Cart</th>
                             <th>action</th>
                           </tr>
@@ -96,6 +95,7 @@ const Wishlist = () => {
                                   >
                                     {wishlistItem.title}
                                   </Link>
+                                  
                                 </td>
 
                                 <td className="product-price-cart">
@@ -117,38 +117,15 @@ const Wishlist = () => {
                                     </span>
                                   )}
                                 </td>
-                                <td>
-                                {
-        cartItems.map((cartItem) =>{
-          return(
-            <>
-            <div> {cartItem.xyz}</div>
-            </>
-          )
-        })
-       }
-                                </td>
-
                                 <td className="product-wishlist-cart">
-                                  {wishlistItem.affiliateLink ? (
-                                    <a
-                                      href={wishlistItem.affiliateLink}
-                                      rel="noopener noreferrer"
-                                      target="_blank"
-                                    >
-                                      {" "}
-                                      Buy now{" "}
-                                    </a>
-                                  ) : wishlistItem.variation &&
-                                    wishlistItem.variation.length >= 1 ? (
+                                
                                     <Link
                                       to={`${process.env.PUBLIC_URL}/product-tab-left/${wishlistItem.id}`}
                                     >
                                       Select option
                                     </Link>
-                                  ) : wishlistItem.item_stock &&
-                                    wishlistItem.item_stock > 0 ? (
-                                    <button
+                              
+                                    {/* <button
                                       onClick={() =>
                                         dispatch(addToCart(wishlistItem))
                                       }
@@ -172,12 +149,12 @@ const Wishlist = () => {
                                       cartItem.item_stock > 0
                                         ? "Added"
                                         : "Add to cart"}
-                                    </button>
-                                  ) : (
-                                    <button disabled className="active">
+                                    </button> */}
+                               
+                                    {/* <button disabled className="active">
                                       Out of stock
-                                    </button>
-                                  )}
+                                    </button> */}
+                               
                                 </td>
 
                                 <td className="product-remove">

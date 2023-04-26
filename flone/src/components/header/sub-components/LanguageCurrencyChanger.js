@@ -70,11 +70,16 @@ const LanguageCurrencyChanger = ({ currency }) => {
                 GBP
               </button>
             </li>
+            <li>
+              <button value="IND" onClick={e => setCurrencyTrigger(e)}>
+                IND
+              </button>
+            </li>
           </ul>
         </div>
       </div>
       <div className="same-language-currency">
-        <p>Call Us 3965410</p>
+        <p>Call Us 9876543210</p>
       </div>
     </div>
   );
