@@ -7,7 +7,10 @@ const FooterCopyright = ({ footerLogo, spaceBottomClass, colorClass }) => {
     <div className={clsx("copyright", spaceBottomClass, colorClass)}>
       <div className="footer-logo">
         <Link to={process.env.PUBLIC_URL + "/"}>
-          <img alt="" src={process.env.PUBLIC_URL + footerLogo} />
+         <h2><b>
+         Urbanic
+         </b>
+         </h2>
         </Link>
       </div>
       <p>
@@ -17,9 +20,9 @@ const FooterCopyright = ({ footerLogo, spaceBottomClass, colorClass }) => {
           rel="noopener noreferrer"
           target="_blank"
         >
-          Flone
+         Urbanic
         </a>
-        .<br /> All Rights Reserved
+        <br /> All Rights Reserved
       </p>
     </div>
   );

@@ -32,6 +32,7 @@ const ShopCategories = ({ categories, getSortParams }) => {
           <ul>
             <li>
               <div className="sidebar-widget-list-left">
+              <Link to = {`/shop-grid-standard`} >
                 <button
                   onClick={(e) => {
                     getSortParams("category", "");
@@ -40,6 +41,7 @@ const ShopCategories = ({ categories, getSortParams }) => {
                 >
                   <span className="checkmark" /> All Categories
                 </button>
+                </Link>
               </div>
             </li>
 

@@ -1,7 +1,8 @@
 import { Suspense, lazy } from "react";
 import ScrollToTop from "./helpers/scroll-top";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import Aaa from "./components/product/Aaa";
+import Shop from './pages/shop/Shop'
 // home pages
 const HomeFashion = lazy(() => import("./pages/home/HomeFashion"));
 
@@ -100,6 +101,10 @@ const App = () => {
               <Route
                 path={process.env.PUBLIC_URL + "/checkout"}
                 element={<Checkout/>}
+              /> 
+               <Route
+                path={process.env.PUBLIC_URL + "/shop-grid-standard/:id"}
+               element={<Shop/>}
               /> 
 
               <Route path="*" element={<NotFound/>} />
