@@ -103,7 +103,7 @@ const App = () => {
                 element={<Checkout/>}
               /> 
                <Route
-                path={process.env.PUBLIC_URL + "/shop-grid-standard/:id"}
+                path={process.env.PUBLIC_URL + "/shop-grid-standard"}
                element={<Shop/>}
               /> 
 
