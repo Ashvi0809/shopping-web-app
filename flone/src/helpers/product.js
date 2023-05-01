@@ -181,7 +181,7 @@ export const getProductsIndividualSizes = products => {
         product.variation &&
         product.variation.map(single => {
           return single.size.map(single => {
-            return productSizes.push(single.name);
+            return productSizes.push(single.title);
           });
         })
       );

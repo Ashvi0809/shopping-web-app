@@ -5,6 +5,11 @@ import clsx from "clsx";
 
 const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
   const { t } = useTranslation();
+  function handleClick() {
+
+    localStorage.removeItem('token');
+
+  }
   
   return (
     <div
@@ -81,6 +86,11 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
               <li>
                 <Link to={process.env.PUBLIC_URL + "/not-found"}>
                   {t("404_page")}
+                </Link>
+              </li>
+              <li>
+                <Link to={process.env.PUBLIC_URL + "/login-register"}>
+               <button onClick={handleClick}>Log out</button>
                 </Link>
               </li>
             </ul>

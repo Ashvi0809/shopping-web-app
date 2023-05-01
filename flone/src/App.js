@@ -3,6 +3,10 @@ import ScrollToTop from "./helpers/scroll-top";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Aaa from "./components/product/Aaa";
 import Shop from './pages/shop/Shop'
+import  AxiosInterceptor  from "./service/axios";
+import onEnter from 'react-router-dom'
+import PrivateRoute from './Protected'
+import Protected from "./Protected";
 // home pages
 const HomeFashion = lazy(() => import("./pages/home/HomeFashion"));
 
@@ -33,7 +37,18 @@ const Checkout = lazy(() => import("./pages/other/Checkout"));
 
 const NotFound = lazy(() => import("./pages/other/NotFound"));
 
-const App = () => {
+const App = ({component: Component, ...rest}) => {
+
+// function requireAuth(nextState, replace, next) {
+//   if (! localStorage.accessToken) {
+//     console.log('bvgvhghgh')
+//     replace({
+//       pathname: "/login",
+//       state: {nextPathname: nextState.location.pathname}
+//     });
+//   }
+//   next();
+// }
   return (
       <Router>
         <ScrollToTop>
@@ -98,12 +113,33 @@ const App = () => {
                 path={process.env.PUBLIC_URL + "/compare"}
                 element={<Compare/>}
               />
+              {/* <Route
+              //  {...rest}
+              //  render={(props) =>
+              //    token ? (
+              //      <Component {...props} />
+              //    ) : (
+              //      <Redirect
+              //        to={{
+              //          pathname: '/login',
+              //          state: { from: props.location }
+              //        }}
+              //      />
+              //    )
+              //  }
+                path={process.env.PUBLIC_URL + '/checkout'}
+                element={<Checkout/> } 
+              />  */}
+
+       
+        <Route path='/checkout'  element={<Protected Component={Checkout}/> }/>
+
               <Route
-                path={process.env.PUBLIC_URL + "/checkout"}
-                element={<Checkout/>}
+                path={process.env.PUBLIC_URL + '/login-register'}
+                element={<HomeFashion/> } 
               /> 
                <Route
-                path={process.env.PUBLIC_URL + "/shop-grid-standard"}
+                path={process.env.PUBLIC_URL + "/shop-grid-standard/:id"}
                element={<Shop/>}
               /> 
 

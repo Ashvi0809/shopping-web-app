@@ -32,6 +32,7 @@ const AxiosInterceptor = () => {
                     // ** eslint-disable-next-line no-param-reassign
                     config.headers.Authorization = JSON.parse(accessToken);
                 }
+               
                 return config;
             }
         );
